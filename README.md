@@ -39,11 +39,9 @@
 ```properties
 spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
 spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
-spring.security.oauth2.client.registration.google.scope=email,profile
 
 spring.security.oauth2.client.registration.github.client-id=YOUR_GITHUB_CLIENT_ID
 spring.security.oauth2.client.registration.github.client-secret=YOUR_GITHUB_CLIENT_SECRET
-spring.security.oauth2.client.registration.github.scope=user:email
 
 
 ```
