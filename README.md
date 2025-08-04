@@ -65,3 +65,50 @@ After a user logs in, Spring Security stores their profile information in an OAu
 We can access this information in a controller method by asking Spring to inject the currently logged-in user.  
 From there, we can get their name, email, and profile picture.  
 The frontend can call an endpoint like `/user` to fetch and display these details.
+
+---
+## 🔹 SecurityFilterChain Configuration Explanation
+
+`http.authorizeHttpRequests(auth -> auth)`  
+Starts defining authorization rules for HTTP requests.
+
+---
+
+`.requestMatchers("/", "./index.html", "/styles.css", "/script.js").permitAll()`  
+Allows everyone (even without login) to access:
+- `/` (root URL)
+- `./index.html` (⚠️ should be `/index.html` — the `./` might not match correctly)
+- `/styles.css`
+- `/script.js`
+
+---
+
+`.requestMatchers("/users").authenticated()`  
+Requires the user to be logged in (authenticated) to access `/users`.
+
+---
+
+`.anyRequest().permitAll()`  
+All other URLs are allowed for everyone.  
+⚠️ Because of this line, most URLs won’t need login unless explicitly listed above.
+
+---
+
+`.oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/index.html", true))`  
+Enables OAuth2 login (Google, GitHub, etc.).  
+
+After successful login, always redirect to `/index.html`:  
+- The `true` means "always go here after login, even if the user tried to go somewhere else first".
+
+---
+
+`.logout(logout -> logout.logoutSuccessUrl("/index.html").permitAll())`  
+Configures logout:
+- After logout, redirect to `/index.html`.
+- `.permitAll()` → anyone can trigger logout.
+
+---
+
+`return http.build();`  
+Finalizes the `HttpSecurity` setup and returns the `SecurityFilterChain` bean.
+
