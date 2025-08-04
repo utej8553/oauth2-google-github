@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth2 Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="login-section">
+    <h1>Login</h1>
+    <a class="google-btn" href="/oauth2/authorization/google">Login with Google</a>
+    <a class="github-btn" href="/oauth2/authorization/github">Login with GitHub</a>
+</div>
+
+<div id="user-section" style="display:none;">
+    <img id="user-pic" width="100" height="100" alt="Profile Picture">
+    <h2 id="user-name"></h2>
+    <p id="user-email"></p>
+    <a class="logout-btn" href="/logout">Logout</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
