@@ -45,6 +45,8 @@ spring.security.oauth2.client.registration.github.client-id=YOUR_GITHUB_CLIENT_I
 spring.security.oauth2.client.registration.github.client-secret=YOUR_GITHUB_CLIENT_SECRET
 spring.security.oauth2.client.registration.github.scope=user:email
 
+
+```
 ---
 ## How It Works
 
